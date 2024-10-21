@@ -12,3 +12,5 @@ require("patz.core.macros")
 --
 -- -- Lazy Plugin Manager
 require("patz.lazy")
+-- -- Mini Icons
+require('mini.icons').setup()
