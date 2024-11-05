@@ -15,8 +15,8 @@ vim.g.node_host_prog = '~/.nvm/versions/node/v20.11.1/bin/node'
 vim.cmd("let $PATH = '/path/to/node/bin:' . $PATH")
 
 -- 42 Header Settings
-vim.g.user42 = 'passunca'
-vim.g.mail42 = 'passunca@student.42porto.com'
+vim.g.user42 = 'palexand'
+vim.g.mail42 = 'palexand@student.42porto.com'
 
 -- Rest.nvim
 vim.g.rest_nvim = {

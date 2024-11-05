@@ -1,7 +1,11 @@
 ###############
 ### General ###
 ###############
+# Afogonca's lil gift
 
+echo "Don't forget to take your meds"
+echo "Don't forget to git push"
+echo "-Afogonca + Jpatrici"
 # Correct wrong spellings
 setopt correct
 
@@ -24,6 +28,45 @@ zmodload zsh/complist
 compinit -d "$XDG_CACHE_HOME/zsh/.zshcompdump-$ZSH_VERSION"
 _comp_options+=(globdots)
 
+#######################
+### Vim Mode Config ###
+#######################
+
+# bindkey -v
+# export KEYTIMEOUT=7
+#
+# # Use vim keys in tab complete menu:
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
+#
+# # Change cursor shape for different vi modes.
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[1 q'
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[5 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#     echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+#
+# # ctrl-e: to edit command line in vim
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey '^e' edit-command-line
+
 ##########################
 ### Zap Plugin Manager ###
 ##########################
@@ -42,6 +85,32 @@ plug "zap-zsh/fzf"
 plug "zap-zsh/web-search"
 plug "jeffreytse/zsh-vi-mode"
 
+#######################
+### Zedro's Scripts ###
+#######################
+
+# tmux
+alias zmux=~/.dotfiles/scripts/tmux/zmux-init.sh
+alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
+
+
+
+#################
+### Greetings ###
+#################
+
+
+
+################
+### Keyboard ###
+################
+
+eval "setxkbmap us"
+
+#######################
+### Zedro's Aliases ###
+#######################
+
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
 
@@ -53,6 +122,7 @@ alias fr='francinette'
 
 # Neovim
 alias v='nvim'
+alias vc='vim | lolcat'
 alias clear_nvim='rm -rf ~/.local/share/nvim'
  
 # git
@@ -68,29 +138,70 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 alias gm='git merge --stat --log'
 
 # kitty at 42
-if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" || $USER == "zedro" ]]; then
+if [[ $USER == "palexand" ||$USER == "Zedro" || $USER == "zedro" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
 alias k='kitty --start-as=fullscreen'
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
 
+# Glow Markdown Renderer
+alias glow=~/bin/glow/glow
+
+# File system Navigation
+# cd || zoxide
+if command -v zoxide > /dev/null 2>&1; then
+	eval "$(zoxide init --cmd cd zsh)"
+	echo "[Running ${GREEN}zoxide${NC}! 📂]"
+else
+	echo "[Running ${YELLOW}cd${NC}! 📂]"
+fi
+# ls || eza
+if command -v eza > /dev/null 2>&1; then
+	echo "[Running ${GREEN}eza${NC}! 📊]"
+	alias ls='eza'
+	alias ll='ls -al'
+	alias llx='eza -laZ --total-size'
+	alias llg='eza -laZ --total-size --git --git-repos'
+else
+	echo "[Running ${YELLOW}ls${NC}! ]"
+	alias ll='ls -al --color'
+fi
+
+# Load Cowsay
+# if command -v lolcat > /dev/null 2>&1; then
+# 	eval "zshcow" | lolcat
+# else
+# 	eval "zshcow"
+# fi
+
 ############################
 ### Load Starship Prompt ###
 ############################
 
-if command -v starship > /dev/null 2>&1; then
+# if command -v starship > /dev/null 2>&1; then
     eval "$(starship init zsh)"
-else
-    ZSH_THEME="refined"
-fi
+# else
+#    ZSH_THEME="refined"
+# fi
 
 #####################################
 ### Clear google-chrome Singleton* ###
 #####################################
-if [[ $USER == "passunca" ]]; then
-  rm -rf ~/.config/google-chrome/Singleton*
-fi
+#if [[ $USER == "palexand" ]]; then
+ alias chrome='rm -rf ~/.config/google-chrome/Singleton*'
+#fi
+
+#################################
+########## FRANCINETTE ##########
+#################################
+
+alias paco=/home/palexand/francinette/francinette-image/run.sh
+
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
+export PATH="/sgoinfre/palexand/.brew/bin:$PATH"
+export XDG_DATA_DIRS="/sgoinfre/palexand/.brew/share:$XDG_DATA_DIRS"
 
 # Set up fzf key bindings and fuzzy completion
 # Define a function to run fzf
@@ -107,7 +218,7 @@ zle -N fzf-file-widget
 # Bind the widget to a key combination (e.g., Ctrl+F)
 bindkey '^F' fzf-file-widget
 
-source <(fzf --zsh)
+# source <(fzf --zsh)
 # Set up fzf key bindings and fuzzy completion
 # source /usr/share/doc/fzf/examples/key-bindings.zsh
 # source /usr/share/doc/fzf/examples/completion.zsh
