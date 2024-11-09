@@ -1,3 +1,23 @@
+#############
+# MY INTROS #
+#############
+
+#!/bin/bash
+
+# Loading message
+echo "Loading your awesome ASCII art..." | lolcat
+sleep 1  # Give a brief delay before showing content
+
+# Use stdbuf to prevent buffering and print each line with a small delay
+stdbuf -oL cat ~/beautify/patz.txt | while IFS= read -r line; do
+    # Output the line with color (purple)
+    echo -e "\e[35m$line\e[0m"
+
+    # Sleep a bit to simulate a loading effect
+    sleep 0.1  # Adjust to control the loading speed
+done
+
+echo -e "\nLoading Complete!" | lolcat # End message after the loop
 ###############
 ### General ###
 ###############
@@ -8,6 +28,7 @@ echo "Don't forget to git push"
 echo "-Afogonca + Jpatrici"
 # Correct wrong spellings
 setopt correct
+
 
 # Load colors
 autoload -U colors && colors
@@ -108,7 +129,7 @@ alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
 eval "setxkbmap us"
 
 #######################
-### Zedro's Aliases ###
+### Patz's Aliases ###
 #######################
 
 # Compiling
@@ -196,6 +217,11 @@ fi
 ########## FRANCINETTE ##########
 #################################
 
+# Load docker image because of error
+ docker start 3e61f8892a99a72262e435529068857bc95104472dbce236170bdfba0795833f
+
+
+# Alias
 alias paco=/home/palexand/francinette/francinette-image/run.sh
 
 # Load Homebrew config script
