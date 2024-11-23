@@ -138,9 +138,9 @@ alias ccw='cc -Wall -Wextra -Werror -g'
 # 42 Norm Check
 alias nn='norminette'
 # Franinette alias
-alias francinette=~/francinette/tester.sh
-alias fr='francinette'
-
+ alias francinette=~/francinette/francinette-image/run.sh
+ alias fr='francinette'
+#
 # Neovim
 alias v='nvim'
 alias vc='vim | lolcat'
@@ -220,6 +220,8 @@ fi
 # Load docker image because of error
  docker start 3e61f8892a99a72262e435529068857bc95104472dbce236170bdfba0795833f
 
+ alias francinette=~/francinette/francinette-image/run.sh
+ alias fr='francinette'
 
 # Alias
 alias paco=/home/palexand/francinette/francinette-image/run.sh
