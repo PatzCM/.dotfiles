@@ -1,14 +1,14 @@
 -- Core
 -- Global options
-require("zedro.core.global")
+require("patz.core.global")
 -- Options
-require("zedro.core.options")
+require("patz.core.options")
 -- Key Mappings
-require("zedro.core.mappings")
+require("patz.core.mappings")
 -- Auto Commands
-require("zedro.core.autocmd")
+require("patz.core.autocmd")
 -- Macros
-require("zedro.core.macros")
+require("patz.core.macros")
 
 -- Lazy Plugin Manager
-require("zedro.lazy")
+require("patz.lazy")
