@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_FONTS
-font_family      family='FiraCode Nerd Font' postscript_name=FiraCodeNF-Reg
+font_family      family="FiraCode Nerd Font"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -28,7 +28,7 @@ bold_italic_font auto
 #: <https://sw.kovidgoyal.net/kitty/kittens/choose-fonts/#font-spec-
 #: syntax>.
 
-font_size 12.0
+font_size 13.0
 
 #: Font size (in pts).
 
@@ -248,7 +248,7 @@ font_size 12.0
 
 #: Text cursor customization {{{
 
-cursor #42f542
+cursor #ff0505
 
 #: Default text cursor color. If set to the special value none the
 #: cursor will be rendered with a "reverse video" effect. Its color
@@ -442,7 +442,7 @@ cursor_beam_thickness 1.1
 #: robustly with the ever-changing sea of bugs that is Cocoa is too
 #: much effort.
 
-# url_color #854dff
+# url_color #0087bd
 # url_style curly
 
 #: The color and style for highlighting URLs on mouse-over. url_style
@@ -1197,12 +1197,12 @@ enable_audio_bell no
 #: Template to use for active tabs. If not specified falls back to
 #: tab_title_template.
 
-# active_tab_foreground   #ffffff
-# active_tab_background   #AB85ff
+# active_tab_foreground   #000
+# active_tab_background   #eee
 # active_tab_font_style   bold-italic
-# inactive_tab_foreground #111
+# inactive_tab_foreground #444
 # inactive_tab_background #999
-# inactive_tab_font_style bold-italic
+# inactive_tab_font_style normal
 
 #: Tab bar colors and styles.
 
@@ -1225,12 +1225,9 @@ enable_audio_bell no
 # foreground #dddddd
 # background #000000
 
-#: Dracula Theme
-include dracula.conf
-
 #: The foreground and background colors.
 
-#background_opacity 0.80
+#background_opacity 0.50
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1272,14 +1269,14 @@ background_image $HOME/.config/kitty/kitty_5_wallpaper.png
 #: Path to a background image. Must be in PNG/JPEG/WEBP/TIFF/GIF/BMP
 #: format.
 
-background_image_layout cscaled
+background_image_layout scaled
 
 #: Whether to tile, scale or clamp the background image. The value can
 #: be one of tiled, mirror-tiled, scaled, clamped, centered or
 #: cscaled. The scaled and cscaled values scale the image to the
 #: window size, with cscaled preserving the image aspect ratio.
 
-background_image_linear no
+background_image_linear yes
 
 #: When background image is scaled, whether linear interpolation
 #: should be used.
@@ -1310,7 +1307,7 @@ background_image_linear no
 #: decrease_background_opacity) or the remote control facility.
 #: Changing this option by reloading the config is not supported.
 
-background_tint 0.8
+background_tint 0.4
 
 #: How much to tint the background image by the background color. This
 #: option makes it easier to read the text. Tinting is done using the
