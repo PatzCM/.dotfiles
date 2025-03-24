@@ -165,7 +165,7 @@ fi
 alias k='kitty --start-as=fullscreen'
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
-
+alias	kt='kitty tmux & disown; exit'
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
 
@@ -173,13 +173,13 @@ alias glow=~/bin/glow/glow
 # cd || zoxide
 if command -v zoxide > /dev/null 2>&1; then
 	eval "$(zoxide init --cmd cd zsh)"
-	echo "[Running ${GREEN}zoxide${NC}! 📂]"
+	# echo "[Running ${GREEN}zoxide${NC}! 📂]"
 else
-	echo "[Running ${YELLOW}cd${NC}! 📂]"
+	# echo "[Running ${YELLOW}cd${NC}! 📂]"
 fi
 # ls || eza
 if command -v eza > /dev/null 2>&1; then
-	echo "[Running ${GREEN}eza${NC}! 📊]"
+	# echo "[Running ${GREEN}eza${NC}! 📊]"
 	alias ls='eza'
 	alias ll='ls -al'
 	alias llx='eza -laZ --total-size'
@@ -218,7 +218,7 @@ fi
 #################################
 
 # Load docker image because of error
- docker start 3e61f8892a99a72262e435529068857bc95104472dbce236170bdfba0795833f
+ alias docker='docker start 3e61f8892a99a72262e435529068857bc95104472dbce236170bdfba0795833f'
 
  alias francinette=~/francinette/francinette-image/run.sh
  alias fr='francinette'

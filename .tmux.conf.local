@@ -443,6 +443,12 @@ tmux_conf_uninstall_plugins_on_reload=true
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/vim-tmux'
 set -g @plugin 'dracula/tmux'
+set -g @plugin 'alexchaichan/tmux-spotify-tui'
+set -g status-right '#{actual_song}'
+
+# run spotify script
+run-shell ~/clone/path/actual_song.tmux
+
 
 # -- custom variables ----------------------------------------------------------
 
