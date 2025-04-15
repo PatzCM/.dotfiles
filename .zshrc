@@ -162,10 +162,10 @@ alias gm='git merge --stat --log'
 if [[ $USER == "palexand" ||$USER == "Zedro" || $USER == "zedro" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
-alias k='kitty --start-as=fullscreen'
+alias k='kitty --start-as=fullscreen & disown; exit'
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
-alias	kt='kitty tmux & disown; exit'
+alias	kt='kitty --start-as=fullscreen tmux & disown; exit'
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
 

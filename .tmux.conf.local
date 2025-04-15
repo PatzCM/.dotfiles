@@ -450,6 +450,17 @@ set -g status-right '#{actual_song}'
 run-shell ~/clone/path/actual_song.tmux
 
 
+set -g window-status-current-format "#[fg=#282a36]#[fg=#a581d9]#[bg=#282a36]☭ 𝖘𝖍𝖚𝖙 𝖚𝖕 𝖋𝖆𝖌𝖌𝖔𝖙 ☭#[bg=default]#[fg=#282a36]"
+set-option -g status-justify centre
+# set -g window-status-current-format "#[fg=#282a36]#[fg=#a581d9]#[bg=#282a36]#(pwd ☭)#[bg=default]#[fg=#282a36]"
+# set-option -g status-justify centre
+
+set -g status-right " #[fg=#282a36]#[fg=#a581d9]#[bg=#282a36]♡ %H:%M#[bg=default]#[fg=#282a36] "
+set-option -g status-right-length 30
+
+set -g status-left "#[fg=#282a36] #[fg=#a581d9]#[bg=#282a36]⛧  ⋆𝖕𝖆𝖙𝖟⋆ ⛧  #(Patz | tr '.' '\n' | head -1)  𓃵  #[bg=default]#[fg=#282a36]"
+set-option -g status-left-length 30
+
 # -- custom variables ----------------------------------------------------------
 
 # to define a custom #{foo} variable, define a POSIX shell function between the
