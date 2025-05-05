@@ -22,8 +22,10 @@ require("lazy").setup({
     { import = 'patz.plugins.git' },
     { import = 'patz.plugins.lsp' },
     { import = 'patz.plugins.nav' },
+{ "catppuccin/nvim", name = "catppuccin", priority = 1000 }
   },
   -- install = { colorscheme = { "dracula" } },
+	{colorscheme = { "catppuccin macchiato" }},
   {
     checker = {
       enabled = true,

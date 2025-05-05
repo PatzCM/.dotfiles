@@ -157,7 +157,6 @@ alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
 alias gm='git merge --stat --log'
-
 # kitty at 42
 if [[ $USER == "palexand" ||$USER == "Zedro" || $USER == "zedro" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
