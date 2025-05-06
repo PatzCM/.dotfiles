@@ -17,8 +17,10 @@ local function button(sc, txt, hl, keybind, keybind_opts)
     position       = "center",
     shortcut       = sc,
     cursor         = 5,
-    width          = 33,
+    width          = 20,
     align_shortcut = "right",
+		-- alight_shortcut = "left",
+		-- align_shortcut = "center",
     hl_shortcut    = hl,
   }
 
@@ -46,7 +48,17 @@ end
 local get_header = require("patz.plugins.ui.ascii.startpage-headers")
 
 local header = {
+	-- how to use db.header_pad 
+	-- db.header_pad = 0
+	--
   type = "text",
+	-- types available: "text", "button", "group", "padding"
+	-- differences between them:
+	-- text: just text
+	-- button: text with keybind
+	-- group: group of buttons
+	-- padding: empty space
+	--
 	-- Change 'rdn' to any program that gives you a random quote.
 	-- math.random(1, #Headers) to get a random header.
   -- val = Headers[math.random(#Headers)],
@@ -54,8 +66,11 @@ local header = {
 	val = get_header(1),
   opts = {
     position = "center",
-    hl       = "Character",
-  }
+    -- hl       = "BufferInactiveTarget",
+		-- hl = "Todo", -- Purple highlight group
+		-- hl = "MiniStatuslineModeNormal",
+		-- center = true,
+	}
 }
 
 -- Get Neovim version
@@ -75,39 +90,71 @@ local footer = {
 	-- "" for date and time
 	-- "漣" for plugins
   val = {
+    " ⛧☾༺         𝕻𝖆𝖙𝖟 𝖜𝖆𝖘 𝖍𝖊𝖗𝖊       ༻☽⛧ ",
     " ",
-    "⛧☾༺   " .. os.date("%H:%M") .. "   " .. os.date("%a, %d %b %y") .. " ༻☽⛧ ",
-    " -ˋˏ✄┈┈┈󰏗 " .. require("lazy").stats().count .. " plugins loaded 󰏗 ┈┈┈",
-    "  █▓▒▒░░░𝕘𝕚𝕧𝕖 𝕞𝕖 𝕪𝕠𝕦𝕣 𝕡𝕦𝕤𝕤𝕪░░░▒▒▓█ ",
-    "          𝕻𝖆𝖙𝖟 𝖜𝖆𝖘 𝖍𝖊𝖗𝖊  ",
+    "   -> " .. os.date("%H:%M") .. " ===   -> " .. os.date("%a, %d %b %y"),
+    -- " -ˋˏ✄┈┈┈󰏗 " .. require("lazy").stats().count .. " plugins loaded 󰏗 ┈┈┈",
+    " ██▓▒▒░░░ 𝕘𝕚𝕧𝕖 𝕞𝕖 𝕪𝕠𝕦𝕣 𝕡𝕦𝕤𝕤𝕪 ░░░▒▒▓██",
     " ",
   },
   opts = {
     position = "center",
     hl = "Todo", -- Purple highlight group
-  }
+		-- hl = "MiniStatuslineModeNormal",
+   -- open hightlight predefined schemes: :highlight
+		}
 }
 
 ---@diagnostic disable: missing-parameter
 local buttons = {
   type = "group",
   val = {
-    button("n", "  New file", 'Macro', ':ene <BAR> startinsert <CR>'),
-    button("f", "  Find file", 'Macro', ':Telescope find_files <CR>'),
-    button("F", "  Find text", 'Macro', ':Telescope live_grep <CR>'),
-    button("-", "󰼙  Get Oil", 'Macro', ':Oil --float<CR>'),
-    button("r", "󱣱  Get Ranger", 'Macro', ':Ranger<CR>'),
-    button("l", "  Get Lazy", 'Macro', ':Lazy<CR>'),
-    button("m", "  Get Mason", 'Macro', ':Mason<CR>'),
-    button("h", "󰞋  Get Help", 'Macro', ':vertical help<CR>'),
-    button("o", "  Get Options", 'Macro', ':vertical options<CR>'),
-    button("q", "󰩈  Quit", 'Macro', ':qa<CR>'),
+    button("n", "  New file", 'MiniStatuslineModeNormal', ':ene <BAR> startinsert <CR>'),
+    button("f", "  Find file", 'MiniStatuslineModeNormal', ':Telescope find_files <CR>'),
+    button("F", "  Find text", 'MiniStatuslineModeNormal', ':Telescope live_grep <CR>'),
+    button("-", "󰼙  Get Oil", 'MiniStatuslineModeNormal', ':Oil --float<CR>'),
+    -- button("r", "󱣱  Get Ranger", 'MiniStatuslineModeNormal', ':Ranger<CR>'),
+    button("l", "  Get Lazy", 'MiniStatuslineModeNormal', ':Lazy<CR>'),
+    button("m", "  Get Mason", 'MiniStatuslineModeNormal', ':Mason<CR>'),
+    button("h", "󰞋  Get Help", 'MiniStatuslineModeNormal', ':vertical help<CR>'),
+    button("o", "  Get Options", 'MiniStatuslineModeNormal', ':vertical options<CR>'),
+    button("q", "󰩈  Quit", 'MiniStatuslineModeNormal', ':qa<CR>'),
   },
-  opts = {
+	opts = {
     spacing = 1,
+		-- how to set number to float? -> :lua print(vim.api.nvim_get_option('lines'))
+		position = "center",
+		hl       = "Macro",
   }
 }
 ---@diagnostic enable: missing-parameter
+
+
+		local greeting = function()
+			-- Determine the appropriate greeting based on the hour
+			local mesg
+			local username = os.getenv("USERNAME")
+			if datetime >= 0 and datetime < 6 then
+				mesg = "Dreaming..󰒲 󰒲 "
+			elseif datetime >= 6 and datetime < 12 then
+				mesg = "🌅 Hi " .. username .. ", Good Morning ☀️"
+			elseif datetime >= 12 and datetime < 18 then
+				mesg = "🌞 Hi " .. username .. ", Good Afternoon ☕️"
+			elseif datetime >= 18 and datetime < 21 then
+				mesg = "🌆 Hi " .. username .. ", Good Evening 🌙"
+			else
+				mesg = "Hi " .. username .. ", it's getting late, get some sleep 😴"
+			end
+			return mesg
+		end
+
+local bottom_section = {
+			type = "text",
+			val = greeting,
+			opts = {
+				position = "center",
+			},
+		}
 
 --
 -- Centering handler of ALPHA
@@ -118,7 +165,7 @@ local ol = {                              -- occupied lines
   message         = #footer.val,          -- CONST: because of padding at the bottom
   length_buttons  = #buttons.val * 2 - 1, -- CONST: it calculate the number that buttons will occupy
   neovim_lines    = 2,                    -- CONST: 2 of command line, 1 of the top bar
-  padding_between = 5,                    -- STATIC: can be set to anything, padding between keybinds and header
+  padding_between = 2,                    -- STATIC: can be set to anything, padding between keybinds and header
 }
 
 local left_terminal_value = vim.api.nvim_get_option('lines') -
@@ -126,24 +173,27 @@ local left_terminal_value = vim.api.nvim_get_option('lines') -
 
 -- Not screen enough to run the command.
 if (left_terminal_value >= 0) then
-  local top_padding    = math.floor(left_terminal_value / 2)
-  local bottom_padding = left_terminal_value - top_padding
-
+  -- local top_padding    = math.floor(left_terminal_value / 2) 
+	-- bigger option:
+	local top_padding = math.floor(left_terminal_value / 5)
+	local bottom_padding = left_terminal_value - top_padding
+ -- center the header and footer 
   --
   -- Set alpha sections
   --
 
   options              = {
     layout = {
-      { type = "padding", val = top_padding },
+      -- { type = "padding", val = top_padding },
+			{type = "padding", val = 1},
       header,
       { type = "padding", val = ol.padding_between },
       buttons,
       footer,
       { type = "padding", val = bottom_padding },
-    },
+		},
     opts = {
-      margin = 5
+      -- margin = 0,
     },
   }
 end
