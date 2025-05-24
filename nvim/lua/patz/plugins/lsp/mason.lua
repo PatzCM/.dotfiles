@@ -65,17 +65,18 @@ return {
         -- "debugpy",  -- python debugger
       },
     })
-    vim.api.nvim_command('MasonToolsInstall')
+		vim.schedule(function()
+    -- vim.api.nvim_command('MasonToolsInstall')
+end)
 
     mason_lspconfig.setup({
-      ensure_installed = {
+      automatic_enable = {
         "clangd",
         "lua_ls",
         -- "jsonls",                    -- json
         -- "html",                      -- html
         -- "pyright",                   -- python
       },
-      automatic_installation = true, -- not the same as ensure_installed
       handlers = {
         -- this first function is the "default handler"
         -- it applies to every language server without a "custom handler"
