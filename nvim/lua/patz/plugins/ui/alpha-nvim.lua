@@ -1,4 +1,13 @@
 -- Alpha (dashboard) for neovim
+return {
+  "goolord/alpha-nvim",
+	priority = 1000,
+	event = "VimEnter",
+  dependencies = 'kyazdani42/nvim-web-devicons',
+  config = function()
+      vim.keymap.set('n', '<leader>a', ':Alpha<CR>', { silent = true, desc = "Open Alpha dashboard" })
+	local alpha = require("alpha")
+	local dashboard = require("alpha.themes.dashboard")
 
 local options
 
@@ -181,7 +190,7 @@ if (left_terminal_value >= 0) then
   --
   -- Set alpha sections
   --
-
+			--
   options              = {
     layout = {
       -- { type = "padding", val = top_padding },
@@ -198,14 +207,35 @@ if (left_terminal_value >= 0) then
   }
 end
 
-return {
-  "goolord/alpha-nvim",
-	priority = 1000,
-  dependencies = 'kyazdani42/nvim-web-devicons',
-  config = function()
-    if (options ~= nil) then
-      require("alpha").setup(options)
-    end
-    vim.keymap.set('n', '<leader>a', ':Alpha<CR>', { silent = true, desc = "Open Alpha dashboard" })
-  end
+	-- Set alpha dashboard
+	dashboard.section.header = header
+	dashboard.section.buttons = buttons
+	dashboard.section.footer = footer
+	dashboard.section.bottom_section = bottom_section
+
+	-- Set alpha greeting
+	dashboard.section.greeting = {
+		type = "text",
+		val = greeting,
+		opts = {
+			position = "center",
+			hl = "AlphaHeader", -- Highlight group for greeting
+		},
+	}
+	-- Set alpha options
+	dashboard.opts = options
+
+	-- Set alpha theme
+	alpha.setup(dashboard.opts)
+	-- Set alpha theme options
+		-- dashboard.opts.layout[1].val = 1 -- Set top padding to 1 line
+		-- dashboard.opts.layout[2].val = 1 -- Set bottom padding to 1 line
+		-- dashboard.opts.layout[3].val = 1 -- Set padding between header and buttons to 1 line
+		-- 
+
+	-- Set highlight groups
+	vim.cmd [[highlight AlphaHeader guifg=#ff9e64 gui=bold]]
+	vim.cmd [[highlight AlphaFooter guifg=#7f8c8d gui=italic]]
+	vim.cmd [[highlight AlphaButtons guifg=#f1c40f gui=bold]]
+	end,
 }

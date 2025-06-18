@@ -6,8 +6,8 @@ return {
   },
   lazy = false,
   config = function()
-    local lsp_zero = require('lsp-zero')
     local mason = require("mason")                     -- import mason
+    local lsp_zero = require('lsp-zero')
     local mason_lspconfig = require("mason-lspconfig") -- import mason-lspconfig
     local mason_tool_installer = require("mason-tool-installer")
     -- Python virtual env detection
@@ -70,13 +70,14 @@ return {
 end)
 
     mason_lspconfig.setup({
-      automatic_enable = {
+      ensure_installed = {
         "clangd",
         "lua_ls",
         -- "jsonls",                    -- json
         -- "html",                      -- html
         -- "pyright",                   -- python
       },
+			automatic_installation = true,
       handlers = {
         -- this first function is the "default handler"
         -- it applies to every language server without a "custom handler"
