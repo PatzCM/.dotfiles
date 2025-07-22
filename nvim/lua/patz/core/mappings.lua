@@ -4,6 +4,10 @@ local keymap = vim.keymap -- for conciseness
 keymap.set(({ "n", "v" }), "<Space>", "<Nop>", { silent = true })
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
 
+-- NeoTree
+vim.keymap.set('n', '<leader>nf', ":Neotree focus<CR>")
+vim.keymap.set('n', '<leader>nm', ":Neotree close<CR>")
+
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
@@ -58,10 +62,10 @@ keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Windows
 -- Resizing window
-keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
-keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
-keymap.set("n", "<C-left>", "<C-w>>", { desc = "Left" })
-keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
+-- keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
+-- keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
+-- keymap.set("n", "<C-left>", "<C-w>>", { desc = "Left" })
+-- keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Splitting windows
 keymap.set("n", "<leader>vs", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>hs", ":split<CR>", { desc = "Horizontal split" })
@@ -82,10 +86,10 @@ keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 
 -- Terminals
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
-keymap.set("t", "<C-h>", "<C-\\><C-n><C-h>", { noremap = true, silent = true })
-keymap.set("t", "<C-j>", "<C-\\><C-n><C-j>", { noremap = true, silent = true })
-keymap.set("t", "<C-k>", "<C-\\><C-n><C-k>", { noremap = true, silent = true })
-keymap.set("t", "<C-l>", "<C-\\><C-n><C-l>", { noremap = true, silent = true })
+-- keymap.set("t", "<C-h>", "<C-\\><C-n><C-h>", { noremap = true, silent = true })
+-- keymap.set("t", "<C-j>", "<C-\\><C-n><C-j>", { noremap = true, silent = true })
+-- keymap.set("t", "<C-k>", "<C-\\><C-n><C-k>", { noremap = true, silent = true })
+-- keymap.set("t", "<C-l>", "<C-\\><C-n><C-l>", { noremap = true, silent = true })
 keymap.set("t", "<A-m>", "<C-\\><C-n><A-m>", { noremap = true, silent = true })
 keymap.set("n", "<leader>Tsv", ":vsp term://", { desc = "Open terminal", noremap = true, silent = false })
 keymap.set("n", "<leader>Tsh", ":sp term://", { desc = "Open terminal", noremap = true, silent = false })

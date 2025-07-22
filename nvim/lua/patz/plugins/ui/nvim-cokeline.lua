@@ -60,7 +60,7 @@ return {
         components = {
           {
             text = function(buf)
-              return '🌳  🌳  🌳  🌳  Z-TreeZ  🌳  🌳  🌳  🌳'
+              return 'ﮩـﮩﮩ٨ـ♡ﮩ𝕻𝖆𝖙𝖟ـ♡ﮩ٨ـﮩﮩ٨ـ'
             end,
             fg = purple,
             bg = function() return get_hex('NvimTreeNormal', 'bg') end,

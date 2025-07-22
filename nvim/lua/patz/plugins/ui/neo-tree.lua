@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
+		"christoomey/vim-tmux-navigator", -- Optional, for navigating between NeoTree and Tmux panes
     "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
     {
       's1n7ax/nvim-window-picker',
@@ -51,7 +52,7 @@ return {
         end
       },
     },
-    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
@@ -71,7 +72,7 @@ return {
       },
       indent = {
         indent_size = 2,
-        padding = 0, -- extra padding on left hand side
+        padding = 1, -- extra padding on left hand side
         -- indent guides
         with_markers = true,
         indent_marker = "│",
@@ -170,6 +171,8 @@ return {
         ["<esc>"] = "cancel", -- close preview or floating neo-tree window
         ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
         -- Read `# Preview Mode` for more information
+				["<C-h>"] = "prev_source", -- or your preferred mapping
+				["<C-l>"] = "next_source",
         ["l"] = "focus_preview",
         ["S"] = "open_split",
         ["s"] = "open_vsplit",
@@ -354,7 +357,7 @@ return {
     local keymap = vim.keymap
     keymap.set('n', '\\', ":Neotree reveal<cr>", { desc = "Open NeoTree" })
     keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { desc = "Toggle NeoTree " })
-    keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })
+   keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })
     keymap.set("n", "<leader>tds", ":Neotree document_symbols<cr>", { desc = "Get Document Symbols NeoTree" })
   end
 }
